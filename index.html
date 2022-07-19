@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Psycological Assessment</title>
+  <link rel="stylesheet" type="text/css" href="./css/bootstrap.min.css">
+  <link rel="stylesheet" type="text/css" href="./style.css">
+  <script src="https://unpkg.com/xlsx/dist/xlsx.full.min.js"></script>
+</head>
+<body>
+  <div class="row">
+    <div class="col-sm-12">
+      <header class="zone green">Psychological Assessment(N-back)</header>
+  </div>
+  </div>
+  <article id="counter"></article>
+  <div class="row">
+    <div class="col-sm-12 landingPage">
+      <div class="col-sm-6 left-hero">
+        <h3>Psychological Assessment: N-back Test, by Drishte Madan, IHBAS, Clinical Psychology Department</h3>
+      </div>
+      <div class="col-sm-6 right-hero">
+        <h2>Hello There! Click on Start whenever you're ready.</h2>
+        <button class="btn btn-primary start">Start</button>
+      </div>
+      <div class="col-sm-6 right-hero2 ">
+        <h2>Thank you for attempting the Assessment.</h2>
+        <h3 id="final"></h3>
+        <div class="tableSection">
+          <table id="maintable" class="table">
+            <thead>
+              <td>Question</td>
+              <td>Excepted Result</td>
+              <td>User's Result</td>
+              <td><button id="export_button" class="btn btn-primary">Export Excel</button></td>
+            </thead>
+            <tbody id="expected">
+
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-12 testPage">
+      <div class="cards">
+        <div id="imgCounter" class="col-sm-12 center"></div>
+        <div class="col-sm-12 center">
+          <img src="./img/n1/1.png" />
+        </div>
+        <div class="col-sm-12 center">
+          <button type="button" class="btn btn-primary yes">Yes</button>
+          <button type="button" class="btn btn-danger no">No</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <script src="./index.js"></script>
+  <script>
+    const scriptURL = '<SCRIPT URL>'
+    const form = document.forms['submit-to-google-sheet']
+  
+    form.addEventListener('submit', e => {
+      e.preventDefault()
+      fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+        .then(response => console.log('Success!', response))
+        .catch(error => console.error('Error!', error.message))
+    })
+  </script>
+</body>
+</html>
+
+<!-- <footer class="zone yellow">Footer</footer> -->
